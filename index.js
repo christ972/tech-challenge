@@ -108,3 +108,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+window.onscroll = () => {
+    // Calculer la hauteur totale de la page
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.body.clientHeight;
+
+    // Calculer la position actuelle de défilement par rapport à la hauteur de la page
+    const scrollPosition = window.scrollY;
+    const scrollPercentage = (scrollPosition / (documentHeight - windowHeight)) * 100;
+
+    // Vérifier si l'utilisateur a parcouru au moins 20% de la page
+    if (scrollPercentage >= 35 && scrollPercentage<=60 &&  document.querySelector('#theme-icon').textContent == '🌞' ) {
+        // Changer la couleur du fond en bleu
+        document.querySelector('#do').style.background =" url('blue.png')";
+        document.querySelectorAll('p,h1').forEach(l =>{
+            l.style.color='white'
+        });
+    } else if( document.querySelector('#theme-icon').textContent == '🌞') {
+        document.querySelectorAll('p,h1').forEach(l =>{
+            l.style.color='black'
+        });        document.querySelector('#do').style.background = 'white';
+    }
+};
